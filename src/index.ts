@@ -283,7 +283,7 @@ export async function verify(token: string, secret: string | JsonWebKey, options
         keyFormat = 'jwk';
         keyData = secret;
     } else if (typeof secret === 'string' && secret.startsWith('-----BEGIN')) {
-        keyFormat = 'spki'
+        keyFormat = 'pkcs8'
         keyData = _str2ab(secret.replace(/-----BEGIN.*?-----/g, '').replace(/-----END.*?-----/g, '').replace(/\s/g, ''))
     } else
         keyData = _utf8ToUint8Array(secret)
